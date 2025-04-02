@@ -1,0 +1,103 @@
+.form-place{
+    display: flex;
+    background-color: #4F9419;
+    width: 100vw;
+    height: 23vh;
+}
+
+.form-place__forms{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding-inline: 5%;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 100%;
+    letter-spacing: 0%;    
+    color: #FFFFFF;
+}
+
+.form-group input,.form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f8f8f8;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #006C18;
+    box-shadow: 0 0 5px #003a0d;
+}
+
+.form-group input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group select:hover {
+    background-color: #f0f0f0;
+}
+
+.form-group input, .form-group select {
+    appearance: none; 
+}
+
+.form-group input[type="text"] {
+    text-transform: capitalize;
+}
+
+.botao-adicionar {
+    padding: 1em;
+    padding-inline: 2.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: Roboto;
+    color: white;
+    background: #006C18;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 41, 4, 0.5);
+}
+
+.botao-adicionar:hover {
+    background: #019120;
+    box-shadow: 0 6px 10px rgba(0, 41, 4, 0.5);
+}
+
+.botao-adicionar:active {
+    transform: scale(0.98);
+}
+
+.botao-adicionar:disabled {
+    background: #bbb;
+    cursor: not-allowed;
+    box-shadow: none;
+}
