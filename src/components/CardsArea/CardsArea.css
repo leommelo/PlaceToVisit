@@ -1,0 +1,11 @@
+.cards-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: space-around;
+    gap: 100px;
+    padding: 1rem;
+    width: 100vw;
+    max-width: 80vw; /* Define um limite para evitar espaços desbalanceados */
+    margin: 0 auto; /* Centraliza no meio da tela */
+    padding-top: 3rem;
+}
