@@ -1,0 +1,51 @@
+.card{
+    width: fit-content;
+    margin-bottom: -2rem;
+}
+.card-upper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    position: relative;
+    min-height: 6.5rem;
+}
+
+.card-upper::after {
+    content: "";
+    display: block;
+    width: 90%;  /* Define a largura da linha no meio */
+    height: 1px;  /* Define a espessura do traço */
+    background-color: #ABABAB; /* Cor da linha */
+    position: absolute;
+    bottom: -0.5rem; /* Posiciona logo abaixo do card */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza a linha */
+}
+
+
+.card-country img{
+    width: 35%;
+    height: auto;
+}
+
+.card-country img{
+    width: 35%;
+    height: auto;
+}
+
+.card-country h2{
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    color: #4F9419;
+}
+
+.card-lower{
+    padding: 1.3rem;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 100%;
+    color: #000000;
+
+}
