@@ -1,0 +1,74 @@
+{
+  "countries": [
+    {
+      "nome": "Brasil",
+      "flag": "https://flagcdn.com/w320/br.png",
+      "local": "Rio de Janeiro",
+      "meta": "04/2026",
+      "id": "37c2"
+    },
+    {
+      "nome": "Canadá",
+      "flag": "https://flagcdn.com/w320/ca.png",
+      "local": "Vancouver",
+      "meta": "04/2026",
+      "id": "0aa9"
+    },
+    {
+      "id": "cfe0",
+      "nome": "Hungria",
+      "flag": "https://flagcdn.com/w320/hu.png",
+      "local": "Vila da folha",
+      "meta": "06/2026"
+    },
+    {
+      "id": "7c2e",
+      "nome": "França",
+      "flag": "https://flagcdn.com/w320/fr.png",
+      "local": "Paris",
+      "meta": "04/2025"
+    },
+    {
+      "id": "3763",
+      "nome": "Ilhas Menores Distantes dos Estados Unidos",
+      "flag": "https://flagcdn.com/w320/um.png",
+      "local": "Neymar",
+      "meta": "15/4405"
+    },
+    {
+      "id": "40be",
+      "nome": "Hong Kong",
+      "flag": "https://flagcdn.com/w320/hk.png",
+      "local": "Neymar",
+      "meta": "15/4405"
+    },
+    {
+      "id": "250a",
+      "nome": "Ilha Heard e Ilhas McDonald",
+      "flag": "https://flagcdn.com/w320/hm.png",
+      "local": "fredy fuzbear",
+      "meta": "99/9999"
+    },
+    {
+      "id": "974c",
+      "nome": "Maurício",
+      "flag": "https://flagcdn.com/w320/mu.png",
+      "local": "o rabinho dele",
+      "meta": "99/9999"
+    },
+    {
+      "id": "ebee",
+      "nome": "Maurício",
+      "flag": "https://flagcdn.com/w320/mu.png",
+      "local": "o rabinho dele testa com string muito grande",
+      "meta": "99/9999"
+    },
+    {
+      "id": "e9ac",
+      "nome": "Omã",
+      "flag": "https://flagcdn.com/w320/om.png",
+      "local": "haná",
+      "meta": "10/0000"
+    }
+  ]
+}
