@@ -77,17 +77,26 @@ const FormPlace = ({ fetchMetas }: { fetchMetas: () => void }) => {
 
     const handleSubmit = (event: React.FormEvent) => {
       event.preventDefault();
-      if(data.nome == ''){
-        setState({open:true, mensagem: "Escolha um país", severity:"error"})
-      } else if(data.local == ""){
-        setState({open:true, mensagem: "Escreva um local", severity:"error"})
-      } else if(data.meta == ""){
-        setState({open:true, mensagem: "Defina alguma data válida", severity:"error"})
-      }else{
+    
+      // Verificação de data válida no futuro
+      const [mes, ano] = data.meta.split('/').map(Number);
+      const dataAtual = new Date();
+      const anoAtual = dataAtual.getFullYear();
+      const mesAtual = dataAtual.getMonth() + 1; // getMonth() retorna 0 para Janeiro, então somamos 1
+    
+      if (data.nome === '') {
+        setState({ open: true, mensagem: "Escolha um país", severity: "error" });
+      } else if (data.local === '') {
+        setState({ open: true, mensagem: "Escreva um local", severity: "error" });
+      } else if (!data.meta.match(/^\d{2}\/\d{4}$/)) {
+        setState({ open: true, mensagem: "Formato de data inválido", severity: "error" });
+      } else if (ano < anoAtual || (ano === anoAtual && mes < mesAtual)) {
+        setState({ open: true, mensagem: "A data deve estar no futuro", severity: "error" });
+      } else {
         envioData();
-        setState({open:true, mensagem: "Meta adicionada com sucesso", severity:"success"})
-      } 
-    }
+        setState({ open: true, mensagem: "Meta adicionada com sucesso", severity: "success" });
+      }
+    };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
