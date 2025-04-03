@@ -32,8 +32,16 @@ const FormsComponent = ({ data, handleChange, countries }: FormsComponentProps) 
         </div>
 
         <div className="form-group" id='form-group-local'>
-          <label htmlFor="local">Local</label>
-          <input type="text" name='local' id='local' value={data?.local} onChange={handleChange} placeholder='Digite o local que deseja conhecer' data-cy='input-local-form'/>
+            <label htmlFor="local">Local</label>
+            <input 
+                type="text" 
+                name='local' 
+                id='local' 
+                value={data?.local} 
+                onChange={handleChange} 
+                placeholder='Digite o local que deseja conhecer' 
+                data-cy='input-local-form'
+            />
         </div>
 
         <div className="form-group">

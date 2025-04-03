@@ -1,4 +1,4 @@
-import { Button, CardActions, Dialog, DialogContent, IconButton, TextField } from '@mui/material';
+import { Button, CardActions, Dialog, DialogContent, IconButton } from '@mui/material';
 import './CardCountry.css'
 import Card from '@mui/material/Card';
 import EditIcon from '@mui/icons-material/Edit';
@@ -38,7 +38,7 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
 
     const deleteMeta = async (id:string) => {
         try{
-            const response = await axios.delete(`http://localhost:3001/countries/${id}`);
+            await axios.delete(`http://localhost:3001/countries/${id}`);
             fetchMetas();
         }catch(error){
             console.error(error);
@@ -59,7 +59,7 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
             } else if (ano < anoAtual || (ano === anoAtual && mes < mesAtual)) {
               setSnackbarState({ open: true, mensagem: "A data deve estar no futuro", severity: "error" });
             } else {
-            const response = await axios.patch(`http://localhost:3001/countries/${id}`, {
+            await axios.patch(`http://localhost:3001/countries/${id}`, {
                 local: editedData.local,
                 meta: editedData.meta
             });
@@ -98,8 +98,12 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
                     <h2>{nome}</h2>
                 </div>
                 <CardActions sx={{ marginTop: -1.5 }}>
-                    <IconButton size="small" onClick={handleEditClick} data-cy='editar-card'><EditIcon /></IconButton>
-                    <IconButton size="small" onClick={() => deleteMeta(id)} ><ClearIcon data-cy='excluir-card'/></IconButton>
+                    <IconButton size="small" onClick={handleEditClick} data-cy='editar-card'>
+                        <EditIcon />
+                    </IconButton>
+                    <IconButton size="small" onClick={() => deleteMeta(id)}>
+                        <ClearIcon data-cy='excluir-card'/>
+                    </IconButton>
                 </CardActions>
             </div>
             <div className="card-lower">
@@ -125,7 +129,15 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
             >
-                <DialogContent sx={{ padding: 3, display: 'flex', flexDirection: 'column', alignItems: 'center', overflow: "hidden" }}>
+                <DialogContent 
+                    sx={{ 
+                        padding: 3, 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        alignItems: 'center', 
+                        overflow: "hidden" 
+                    }}
+                >
                     <motion.img
                         src={flag}
                         alt={`Bandeira de ${nome}`}

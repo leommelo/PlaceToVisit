@@ -14,7 +14,7 @@ interface SnackbarProps {
 
 const SnackbarAlert: React.FC<SnackbarProps> = ({ state, setState }) => {
   const handleClose = (
-    event: React.SyntheticEvent | Event,
+    _event: React.SyntheticEvent | Event,
     reason?: SnackbarCloseReason,
   ) => {
     if (reason === 'clickaway') {
