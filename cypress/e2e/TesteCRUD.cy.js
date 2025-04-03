@@ -27,7 +27,7 @@ describe('template spec', () => {
     cy.get('[data-cy="salvar-edit"]').click(); 
   });
 
-  it.only('Exclui a meta criada', () => {
+  it('Exclui a meta criada', () => {
     cy.visit('http://localhost:5173');
 
     cy.contains('[data-cy="card"]', 'Teste Cypress Edição') // Encontra o card certo
