@@ -134,7 +134,7 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
                         transition={{ duration: 0.3, delay: 0.2 }}
                     />
                     <h2>{nome}</h2>
-                    <div className="form-place__forms">
+                    <div className="form-place__forms-editing">
                         <div className="form-group">
                             <label htmlFor="local">Local</label>
                             <input type="text" name="local" id="local" value={editedData.local} onChange={handleChange} />
