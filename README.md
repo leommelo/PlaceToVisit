@@ -11,6 +11,7 @@ Aplicação web para gerenciar destinos de viagem, desenvolvida com React, TypeS
 - Framer Motion
 - Axios
 - JSON Server
+- React Hooks
 
 ## 📋 Pré-requisitos
 
@@ -21,7 +22,7 @@ Aplicação web para gerenciar destinos de viagem, desenvolvida com React, TypeS
 
 1. Clone o repositório:
 ```bash
-git clone [URL_DO_REPOSITÓRIO]
+git clone https://github.com/leommelo/PlaceToVisit.git
 cd PlaceToVisit
 ```
 
