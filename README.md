@@ -21,7 +21,7 @@ Aplicação web para gerenciar destinos de viagem, desenvolvida com React, TypeS
 
 1. Clone o repositório:
 ```bash
-git clone [URL_DO_REPOSITÓRIO]
+git clone https://github.com/leommelo/PlaceToVisit.git
 cd PlaceToVisit
 ```
 
