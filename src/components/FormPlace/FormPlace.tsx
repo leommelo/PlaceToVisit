@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import './FormPlace.css';
-import InputMask from 'react-input-mask';
 import axios from 'axios';
 import SnackbarAlert from '../SnackBarAlert/SnackbarAlert';
+import { Dialog, DialogContent } from '@mui/material';
+import { motion } from 'framer-motion';
+import FormsComponent from '../FormsComponent/FormsComponent';
 
 const FormPlace = ({ fetchMetas }: { fetchMetas: () => void }) => {
   interface Country {
@@ -18,6 +20,7 @@ const FormPlace = ({ fetchMetas }: { fetchMetas: () => void }) => {
   }
 
   const [countries, setCountries] = useState<Country[]>([]);
+  const [isAdding, setIsAdding] = useState(false);
   const [data, setData] = useState<Data>({
     nome: '',
     flag: '',
@@ -91,6 +94,7 @@ const FormPlace = ({ fetchMetas }: { fetchMetas: () => void }) => {
         local: '',
         meta: ''
       })
+      setIsAdding(false);
     }
   };
 
@@ -115,38 +119,44 @@ const FormPlace = ({ fetchMetas }: { fetchMetas: () => void }) => {
   return (
     <div className='form-place'>
       <form className='form-place__forms' onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">País</label>
-          <select name="nome" id="name" value={data?.nome} onChange={handleChange}>
-            <option value="">Selecione um país</option>
-            {countries.map((country, index) => (
-              <option key={index} value={country.nome}>
-                {country.nome} 
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="local">Local</label>
-          <input type="text" name='local' id='local' value={data?.local} onChange={handleChange} placeholder='Digite o local que deseja conhecer'/>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="meta">Meta</label>
-          <InputMask 
-            mask="99/9999" 
-            name='meta'
-            id="meta"
-            placeholder="Mês/Ano"
-            type="text"
-            value={data?.meta}
-            onChange={handleChange}
-          />
-        </div>
-
-        <button type="submit" className='botao-adicionar'>Adicionar</button>
+        <FormsComponent
+          data={data}
+          handleChange={handleChange}
+          countries={countries}
+        />
       </form>
+
+      <button className='botao-adicionar' id='buton-form-open' onClick={() => setIsAdding(true)}>Adicionar</button>
+
+      {/*Modal para mobile*/}
+      <Dialog
+          open={isAdding}
+          onClose={() => setIsAdding(false)}
+          fullWidth
+          maxWidth="md"
+          sx={{ 
+              "& .MuiPaper-root": { 
+                  overflow: "hidden", 
+                  borderRadius: "12px", 
+              } 
+          }}
+      >
+          <motion.div
+              initial={{ scale: 0.2, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+              <DialogContent sx={{ padding: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', overflow: "hidden" }}>
+                  <form className='form-place__forms-cel' onSubmit={handleSubmit}>
+                    <FormsComponent
+                      data={data}
+                      handleChange={handleChange}
+                      countries={countries}
+                    />
+                  </form>
+              </DialogContent>
+          </motion.div>
+      </Dialog>
 
       <SnackbarAlert state={snackbarState} setState={setSnackbarState} />
     </div>

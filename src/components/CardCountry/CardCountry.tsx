@@ -77,7 +77,20 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
 
   return (
     <div className='card'>
-        <Card sx={{ maxWidth: 315, padding: 3, borderRadius: 3, boxShadow: 8, minHeight: 250 }} >
+        <Card
+            sx={{
+                maxWidth: 315,
+                padding: 3,
+                borderRadius: 3,
+                boxShadow: 8,
+                minHeight: 250,
+                "@media (max-width: 874px)": {
+                    maxWidth:418,
+                    minHeight: 270, // Ajusta a altura mínima
+                    padding: 2, // Reduz o padding
+                },
+            }}
+        >
             <div className="card-upper">
                 <div className="card-country">
                     <img height="140" src={flag} alt="Bandeira do país" />
