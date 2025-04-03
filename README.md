@@ -11,6 +11,7 @@ Aplicação web para gerenciar destinos de viagem, desenvolvida com React, TypeS
 - Framer Motion
 - Axios
 - JSON Server
+- React Hooks
 
 ## 📋 Pré-requisitos
 
