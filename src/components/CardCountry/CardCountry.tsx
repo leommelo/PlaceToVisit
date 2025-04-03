@@ -78,6 +78,7 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
   return (
     <div className='card'>
         <Card
+            data-cy='card'
             sx={{
                 maxWidth: 315,
                 padding: 3,
@@ -97,8 +98,8 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
                     <h2>{nome}</h2>
                 </div>
                 <CardActions sx={{ marginTop: -1.5 }}>
-                    <IconButton size="small" onClick={handleEditClick}><EditIcon /></IconButton>
-                    <IconButton size="small" onClick={() => deleteMeta(id)}><ClearIcon /></IconButton>
+                    <IconButton size="small" onClick={handleEditClick} data-cy='editar-card'><EditIcon /></IconButton>
+                    <IconButton size="small" onClick={() => deleteMeta(id)} ><ClearIcon data-cy='excluir-card'/></IconButton>
                 </CardActions>
             </div>
             <div className="card-lower">
@@ -137,7 +138,7 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
                     <div className="form-place__forms-editing">
                         <div className="form-group">
                             <label htmlFor="local">Local</label>
-                            <input type="text" name="local" id="local" value={editedData.local} onChange={handleChange} />
+                            <input type="text" name="local" id="local" value={editedData.local} onChange={handleChange} data-cy='edit-local'/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="meta">Meta</label>
@@ -149,14 +150,15 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
                                 type="text"
                                 value={editedData.meta}
                                 onChange={handleChange}
+                                data-cy='edit-meta'
                             />
                         </div>
                     </div>
                     <div style={{ marginTop: '20px', display: 'flex', gap: '10px' }}>
-                        <Button variant="contained" color="success" onClick={() => saveEdit(id)}>
+                        <Button variant="contained" color="success" onClick={() => saveEdit(id)} data-cy='salvar-edit'>
                             Salvar
                         </Button>
-                        <Button variant="contained" color="error" onClick={() => setIsEditing(false)}>
+                        <Button variant="contained" color="error" onClick={() => setIsEditing(false)} > 
                             Cancelar
                         </Button>
                     </div>

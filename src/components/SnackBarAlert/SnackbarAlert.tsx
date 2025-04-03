@@ -30,6 +30,7 @@ const SnackbarAlert: React.FC<SnackbarProps> = ({ state, setState }) => {
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
       autoHideDuration={4000}
       onClose={handleClose}
+      data-cy='snackbar-form'
     >
       <Alert
         onClose={handleClose}

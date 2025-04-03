@@ -21,7 +21,7 @@ const FormsComponent = ({ data, handleChange, countries }: FormsComponentProps) 
     <>
         <div className="form-group">
           <label htmlFor="name">País</label>
-          <select name="nome" id="name" value={data?.nome} onChange={handleChange}>
+          <select name="nome" id="name" value={data?.nome} onChange={handleChange} data-cy="select-form">
             <option value="">Selecione um país</option>
             {countries.map((country, index) => (
               <option key={index} value={country.nome}>
@@ -33,7 +33,7 @@ const FormsComponent = ({ data, handleChange, countries }: FormsComponentProps) 
 
         <div className="form-group" id='form-group-local'>
           <label htmlFor="local">Local</label>
-          <input type="text" name='local' id='local' value={data?.local} onChange={handleChange} placeholder='Digite o local que deseja conhecer'/>
+          <input type="text" name='local' id='local' value={data?.local} onChange={handleChange} placeholder='Digite o local que deseja conhecer' data-cy='input-local-form'/>
         </div>
 
         <div className="form-group">
@@ -46,10 +46,11 @@ const FormsComponent = ({ data, handleChange, countries }: FormsComponentProps) 
             type="text"
             value={data?.meta}
             onChange={handleChange}
+            data-cy='input-meta-form'
           />
         </div>
 
-        <button type="submit" className='botao-adicionar'>Adicionar</button>
+        <button type="submit" className='botao-adicionar' data-cy='botao-form'>Adicionar</button>
     </>
   )
 }
