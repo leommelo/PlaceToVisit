@@ -12,6 +12,7 @@ Aplicação web para gerenciar destinos de viagem, desenvolvida com React, TypeS
 - Axios
 - JSON Server
 - React Hooks
+- Cypress
 
 ## 📋 Pré-requisitos
 
@@ -22,7 +23,7 @@ Aplicação web para gerenciar destinos de viagem, desenvolvida com React, TypeS
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/leommelo/PlaceToVisit.git
+git clone https://github.com/seu-usuario/PlaceToVisit.git
 cd PlaceToVisit
 ```
 
@@ -54,24 +55,52 @@ npm run dev
 yarn dev
 ```
 
-3. Acesse a aplicação em:
+3. Acesse a aplicação em `http://localhost:5173`
+
+## 🧪 Testes Automatizados
+
+O projeto utiliza Cypress para testes automatizados. Para rodar os testes:
+
+1. Instale o Cypress (caso ainda não tenha):
+```bash
+npm install -D cypress
 ```
-http://localhost:5173
+
+2. Para abrir o Cypress em modo interativo:
+```bash
+npx cypress open
 ```
+
+3. Para rodar os testes em modo headless:
+```bash
+npx cypress run
+```
+
+### Estrutura dos Testes
+
+Os testes estão organizados em:
+- `cypress/e2e/`: Testes de fluxos completos
+- `cypress/fixtures/`: Dados estáticos para os testes
+- `cypress/support/`: Configurações e comandos personalizados
+
+### Testes Disponíveis
+
+- Adição de nova meta
+- Edição de meta existente
+- Exclusão de meta
+- Validação de formulários
 
 ## 📝 Funcionalidades
 
-- Visualização de países e destinos
-- Adição de novos destinos
-- Edição de destinos existentes
-- Exclusão de destinos
-- Validação de datas de meta
-- Feedback visual com Snackbar para:
-  - Sucesso nas operações
-  - Erros de validação
-  - Mensagens informativas
+- Adicionar metas de viagem
+- Editar metas existentes
+- Excluir metas
+- Visualizar lista de metas
+- Validação de formulários
+- Interface responsiva
+- Notificações de feedback
 - Animações suaves com Framer Motion
-- Interface responsiva com Material-UI
+- Testes automatizados
 
 ## 🛠 Estrutura do Projeto
 
