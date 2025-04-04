@@ -115,6 +115,10 @@ src/
 │   ├── Header/         # Cabeçalho
 │   └── SnackBarAlert/  # Componente de alerta
 ├── pages/          # Páginas da aplicação
+├── services/       # Serviços de API
+│   └── api.ts      # Centralização de chamadas à API
+├── types/          # Definições de tipos TypeScript
+│   └── index.ts    # Interfaces centralizadas
 └── App.tsx         # Componente principal
 ```
 

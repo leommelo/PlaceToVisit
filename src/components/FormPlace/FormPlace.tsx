@@ -1,54 +1,31 @@
 import { useEffect, useState } from 'react';
 import './FormPlace.css';
-import axios from 'axios';
 import SnackbarAlert from '../SnackBarAlert/SnackbarAlert';
 import { Dialog, DialogContent } from '@mui/material';
 import { motion } from 'framer-motion';
 import FormsComponent from '../FormsComponent/FormsComponent';
+import { countryService } from '../../services/api';
+import { FormData, FormPlaceProps, SnackbarState } from '../../types';
 
-const FormPlace = ({ fetchMetas }: { fetchMetas: () => void }) => {
-  interface Country {
-    nome: string;
-    flag: string;
-  }
-
-  interface Data {
-    nome: string;
-    flag: string;
-    local: string;
-    meta: string;
-  }
-
-  const [countries, setCountries] = useState<Country[]>([]);
+const FormPlace = ({ fetchMetas }: FormPlaceProps) => {
+  const [countries, setCountries] = useState<{ nome: string; flag: string; }[]>([]);
   const [isAdding, setIsAdding] = useState(false);
-  const [data, setData] = useState<Data>({
+  const [data, setData] = useState<FormData>({
     nome: '',
     flag: '',
     local: '',
     meta: ''
   });
 
-  // Estado para o Snackbar
-  const [snackbarState, setSnackbarState] = useState({
+  const [snackbarState, setSnackbarState] = useState<SnackbarState>({
     open: false,
     mensagem: "",
-    severity: undefined as 'error' | 'info' | 'success' | 'warning' | undefined,
+    severity: undefined,
   });
 
   const fetchCountries = async () => {
     try {
-      const response = await axios.get('https://restcountries.com/v3.1/all');
-      const countriesData = response.data.map((country: any) => {
-        return {
-          nome: country.translations.por?.common || country.name.common,
-          flag: country.flags?.png || ''
-        };
-      });
-
-      countriesData.sort((a: Country, b: Country) =>
-        a.nome.localeCompare(b.nome, 'pt', { sensitivity: 'base' })
-      );
-
+      const countriesData = await countryService.fetchAllCountries();
       setCountries(countriesData);
     } catch (error) {
       console.error('Error fetching countries:', error);
@@ -66,7 +43,7 @@ const FormPlace = ({ fetchMetas }: { fetchMetas: () => void }) => {
 
   const envioData = async () => {
     try {
-      await axios.post("http://localhost:3001/countries", data);
+      await countryService.create(data);
       fetchMetas();
       setSnackbarState({ open: true, mensagem: "Meta adicionada com sucesso", severity: "success" });
     } catch (error) {
@@ -128,12 +105,12 @@ const FormPlace = ({ fetchMetas }: { fetchMetas: () => void }) => {
           data={data}
           handleChange={handleChange}
           countries={countries}
+          handleSubmit={handleSubmit}
         />
       </form>
 
       <button className='botao-adicionar' id='buton-form-open' onClick={() => setIsAdding(true)}>Adicionar</button>
 
-      {/*Modal para mobile*/}
       <Dialog
           open={isAdding}
           onClose={() => setIsAdding(false)}
@@ -157,6 +134,7 @@ const FormPlace = ({ fetchMetas }: { fetchMetas: () => void }) => {
                       data={data}
                       handleChange={handleChange}
                       countries={countries}
+                      handleSubmit={handleSubmit}
                     />
                   </form>
               </DialogContent>

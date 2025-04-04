@@ -3,30 +3,21 @@ import './CardCountry.css'
 import Card from '@mui/material/Card';
 import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
-import axios from 'axios';
 import { useState } from 'react';
 import InputMask from 'react-input-mask'
 import SnackbarAlert from '../SnackBarAlert/SnackbarAlert';
 import { motion } from 'framer-motion';
+import { countryService } from '../../services/api';
+import { CardCountryProps, SnackbarState } from '../../types';
 
-interface CountryProps {
-    id: string;
-    nome: string;
-    flag: string;
-    local: string;
-    meta: string;
-    fetchMetas: () => void;
-}
-
-
-function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
+function CardCountry({ id, nome, flag, local, meta, fetchMetas }: CardCountryProps) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedData, setEditedData] = useState({ local, meta });
-    const [snackbarState, setSnackbarState] = useState({
+    const [snackbarState, setSnackbarState] = useState<SnackbarState>({
         open: false,
         mensagem: "",
-        severity: undefined as 'error' | 'info' | 'success' | 'warning' | undefined,
-      });
+        severity: undefined,
+    });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEditedData({ 
@@ -38,7 +29,7 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
 
     const deleteMeta = async (id:string) => {
         try{
-            await axios.delete(`http://localhost:3001/countries/${id}`);
+            await countryService.delete(id);
             fetchMetas();
         }catch(error){
             console.error(error);
@@ -59,7 +50,7 @@ function CardCountry({ id,nome, flag, local, meta, fetchMetas }: CountryProps) {
             } else if (ano < anoAtual || (ano === anoAtual && mes < mesAtual)) {
               setSnackbarState({ open: true, mensagem: "A data deve estar no futuro", severity: "error" });
             } else {
-            await axios.patch(`http://localhost:3001/countries/${id}`, {
+            await countryService.update(id, {
                 local: editedData.local,
                 meta: editedData.meta
             });
